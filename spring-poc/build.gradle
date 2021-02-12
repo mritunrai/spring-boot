@@ -63,4 +63,10 @@ contractTest {
 
 test {
 	useJUnitPlatform()
+	useJUnit {
+        includeCategories 'com.example.demo.unittests.UnitTest'
+    }
+    testLogging {
+        showStandardStreams = true
+    }
 }
