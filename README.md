@@ -14,4 +14,4 @@ Wiremock is an open source library which can be used to mock HTTP-based APIs wit
 ## Mockito 
 Mockito is a mocking framework, an open source JAVA library that allows to create and configure mock objects. Using Mockito we can add dummy functionality to a mock object and use it in our tests.
 
-#### Userfull Link : https://medium.com/testvagrant/mocking-key-to-dependency-locks-256b4cad9481
+#### Usefull Link : https://medium.com/testvagrant/mocking-key-to-dependency-locks-256b4cad9481
