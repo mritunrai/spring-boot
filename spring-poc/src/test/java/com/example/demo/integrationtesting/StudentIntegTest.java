@@ -8,18 +8,19 @@ import java.util.stream.Stream;
 
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.test.context.junit4.SpringRunner;
+
 
 import com.example.model.Student;
 import com.example.repositary.StudentRepositary;
 import com.example.services.StudentService;
 
+
 @SpringBootTest
-@RunWith(SpringRunner.class)
+//@RunWith(SpringRunner.class)
+//@RunWith(SpringJUnit4ClassRunner.class)
 public class StudentIntegTest {
 
 	@Autowired
@@ -38,7 +39,18 @@ public class StudentIntegTest {
 	}
 
 	@Test
+	@Tag("student")
 	void justAnExample() {
 		System.out.println("This test method should be run");
+		
+		assertEquals(2, 2);
+	}
+	
+	@Test
+	@Tag("student")
+	void justAnExample1() {
+		System.out.println("This test method should be run");
+		
+		assertEquals(2, 3);
 	}
 }
