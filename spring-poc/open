@@ -1,0 +1,4 @@
+curl -X POST --data 
+'{ "request": { "url": "/get/user/1", "method": "GET" },
+"response": { "status": 200, "body": "Here it is!\n" }}'
+ http://localhost:8080/__admin/mappings/new
