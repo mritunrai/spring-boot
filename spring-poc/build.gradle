@@ -86,7 +86,7 @@ task integTest(type: Test) {
 	}
 	
 	doLast{  
-        println "Welcome to Javatpoint. It is a Custom task Example.";  
+        println "Welcome to Integration Test using Mockito!.";  
     }  
 }
 
@@ -97,5 +97,9 @@ task integTest(type: Test) {
 	
     testLogging {
         showStandardStreams = true
+    }
+    
+    doLast{  
+        println "Welcome to Unit Test using Mockito!.";  
     }
 }
