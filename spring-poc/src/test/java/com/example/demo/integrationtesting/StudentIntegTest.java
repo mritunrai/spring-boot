@@ -1,44 +1,60 @@
 package com.example.demo.integrationtesting;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.when;
+import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
+import static com.github.tomakehurst.wiremock.client.WireMock.equalTo;
+import static com.github.tomakehurst.wiremock.client.WireMock.get;
+import static com.github.tomakehurst.wiremock.client.WireMock.stubFor;
+import static com.github.tomakehurst.wiremock.client.WireMock.urlEqualTo;
 
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
+import org.junit.Rule;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.example.model.Student;
-import com.example.repositary.StudentRepositary;
-import com.example.services.StudentService;
+import com.github.tomakehurst.wiremock.junit.WireMockRule;
 
-@SpringBootTest
 @RunWith(SpringRunner.class)
+@SpringBootTest()
+
 public class StudentIntegTest {
+	@Rule
+	public WireMockRule wireMockRule = new WireMockRule(8089);
 
-	@Autowired
-	private StudentService stduentservice;
+	@BeforeEach
+	public void setUpClass() {
+		System.out.println("Wiremock server has been started!");
+		wireMockRule.start();
+	}
 
-	@MockBean
-	private StudentRepositary repositary;
+	@AfterEach
+	public void tearDownClass() {
 
-	@Tag("student")
-	@Test
-	public void getAllStudents() {
-		when(repositary.getAllStudents())
-				.thenReturn(Stream.of(new Student("Danile", "sd", 9888), new Student("Huy", "mk@gmail.com", 8777))
-						.collect(Collectors.toList()));
-		assertEquals(2, stduentservice.getAllStudents().size());
+		System.out.println("Wiremock server is going to be stopped!");
+		wireMockRule.stop();
 	}
 
 	@Test
-	void justAnExample() {
-		System.out.println("This test method should be run");
+	@Tag("integ")
+	public void exampleTest() {
+
+		System.out.println("Test is going to be executed!");
+
+		stubFor(get(urlEqualTo("/my/resource")).withHeader("Accept", equalTo("text/xml"))
+				.willReturn(aResponse().withStatus(200)
+                    .withHeader("Content-Type", "text/xml")
+                    .withBody("<response>Some content</response>")
+				));
+
+//        Result result = myHttpServiceCallingObject.doSomething();
+//
+//        assertTrue(result.wasSuccessful());
+
+//        verify(postRequestedFor(urlMatching("/my/resource/[a-z0-9]+"))
+//                .withRequestBody(matching(".*<message>1234</message>.*"))
+//                .withHeader("Content-Type", notMatching("application/json")));
 	}
 }
