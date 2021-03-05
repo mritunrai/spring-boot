@@ -76,7 +76,7 @@ contracts {
 	testFramework = org.springframework.cloud.contract.verifier.config.TestFramework.JUNIT5
 }
 
-contractTest {
+task contractTest(type: Test) {
 	useJUnitPlatform()
 }
 

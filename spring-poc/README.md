@@ -22,3 +22,8 @@ We can test our services by two different way using wiremock.
 Mockito is a mocking framework, an open source JAVA library that allows to create and configure mock objects. Using Mockito we can add dummy functionality to a mock object and use it in our tests.
 
 #### Usefull Link : https://medium.com/testvagrant/mocking-key-to-dependency-locks-256b4cad9481
+
+## About PACT
+PACT is used to do contract based testing to ensure messages which are being communicated among consumer and provider are in pre defined format.
+
+We can perform contract testing using PACT or spring-cloud-contract .
