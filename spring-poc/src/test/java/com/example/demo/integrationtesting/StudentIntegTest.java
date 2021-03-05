@@ -48,13 +48,5 @@ public class StudentIntegTest {
                     .withHeader("Content-Type", "text/xml")
                     .withBody("<response>Some content</response>")
 				));
-
-//        Result result = myHttpServiceCallingObject.doSomething();
-//
-//        assertTrue(result.wasSuccessful());
-
-//        verify(postRequestedFor(urlMatching("/my/resource/[a-z0-9]+"))
-//                .withRequestBody(matching(".*<message>1234</message>.*"))
-//                .withHeader("Content-Type", notMatching("application/json")));
 	}
 }
